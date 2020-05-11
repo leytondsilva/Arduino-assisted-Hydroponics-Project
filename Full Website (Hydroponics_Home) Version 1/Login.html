@@ -1,0 +1,91 @@
+<!DOCTYPE html >
+<html>
+<head>
+<title>LOGIN FORM</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="o.css">
+<link rel="stylesheet" type="text/css" href="reference.css" >
+<link rel ="icon" href ="Hydro_Logo.PNG" type = "image/x-icon"> 
+<!-- Navigation -->
+<nav class="w3-bar w3-black">
+    <a href="Hydroponics_Home.html" class="w3-button w3-bar-item">Home</a>
+    <a href="materials.html" class="w3-button w3-bar-item">Materials</a>
+    <a href="Procedure.html" class="w3-button w3-bar-item">Procedure</a>
+    <a href="Reference.html" class="w3-button w3-bar-item">Reference</a>
+    <a href="aboutHydroponics.html" class="w3-button w3-bar-item">About</a>
+
+    <a href="register.php" class="w3-button w3-right w3-bar-item">Register</a>
+    <a right="100%" href="Login.html" class="w3-button w3-right w3-bar-item">Login</a>
+</nav>
+
+<style>
+body {
+    background-image: url("Background_Login.jpeg");
+        background-repeat:no-repeat;
+        background-size:cover;
+}
+
+
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 1% 1.5%;
+  border: none;
+  cursor: pointer;
+  width: 60%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding-left: 10%;
+  margin: 1% 0 2% 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+</style>
+
+
+</head>
+
+
+<body>
+<section style="padding-top:10% ;padding-left:38%;font-family: Arial, Helvetica, sans-serif, serif;font-size: 130%">
+
+    <form id="Forms" method="post" action="login.php" >
+            <h1 style="color: black; text-align: center;font-family:Arial, Helvetica, sans-serif"><b> LOGIN </b></h1>
+        <table style="border: 0.5; padding-left: 10%" >
+            <tr>
+                <td><label for="user_id"><b>Username</b></label></td>
+                <td ><input type="text" name="username" placeholder="Enter Username" id="user_id" required></td>
+            </tr>
+            <tr>
+                <td><label for="user_pass"><b>Password</b></label></td>
+                <td><input type="password" name="password" placeholder="Enter Password" id="user_pass" required></input></td>
+            </tr>
+        </table>
+        <?php if (isset($name_error)): ?>
+        <span><?php echo $name_error; ?></span>
+      <?php endif ?>
+      <br>
+        <div style="padding-left: 30%"><input type="submit" value="Login" class="btn"></div>
+        <p style="text-align: center;font-size: 70%">
+                Don't have an account? <a href="register.php" id="link1">Register</a>.<br>
+                Forgot Password? <a href="register.php" id="link1">Click Here</a>.
+        </p>
+    </form>
+</section>
+</body>
+</html>

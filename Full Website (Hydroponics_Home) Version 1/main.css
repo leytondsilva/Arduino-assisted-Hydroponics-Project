@@ -1,0 +1,49 @@
+#head1 {
+	color:#33FFF1;	
+	margin-left:38%;
+	margin-top:17%;
+}
+
+
+
+#tree1 {
+position: absolute;
+top: 0px;
+left: 0%;
+}
+
+#tree2 {
+position: absolute;
+top: 0px;
+left: 20%;
+}
+#tree3 {
+position: absolute;
+top: 0px;
+left: 40%;
+}
+#tree4 {
+position: absolute;
+top: 0px;
+left: 60%;
+}
+#tree5 {
+position: absolute;
+top: 0px;
+left: 76%;
+}
+
+
+
+#click {
+	color:red;
+	position: absolute;
+	top: 45%;
+	left: 45%;
+}
+
+#Palm_Leaf {
+position: absolute;
+top: 48%;
+left: 43.5%;
+}

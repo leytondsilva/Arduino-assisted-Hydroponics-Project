@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel ="icon" href ="Hydro_Logo.PNG" type = "image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="o.css">
+
+<title>Hydroponics Project</title>
+<!-- Navigation -->
+<nav class="w3-bar w3-black">
+    <a href="Hydroponics_Home.html" class="w3-button w3-bar-item">Home</a>
+    <a href="materials.html" class="w3-button w3-bar-item">Materials</a>
+    <a href="Procedure.html" class="w3-button w3-bar-item">Procedure</a>
+    <a href="Reference.html" class="w3-button w3-bar-item">Reference</a>
+    <a href="aboutHydroponics.html" class="w3-button w3-bar-item">About</a>
+
+    <a href="Register.php" class="w3-button w3-right w3-bar-item">Register</a>
+    <a right="100%" href="Login.html" class="w3-button w3-right w3-bar-item">Login</a>
+</nav>
+
+<style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 35%;
+}
+
+body {
+    background-image: url("Background_Login.jpeg");
+        background-repeat:no-repeat;
+        background-size:cover;
+}
+
+#wrap {
+    z-index: 1;
+    position:relative;
+}
+
+.grid_1200.boxed, .grid_1200.boxed2, .grid_1200.boxed #header.fixed-nav, .grid_1200.boxed2 #header.fixed-nav {
+    width: 67% !important;
+}
+.boxed, .boxed2 {
+    background-color: #333337;
+    width: 89%;
+    margin: 0 auto;
+    position: relative;
+}
+</style>
+</head>
+
+<body>
+<br>
+<br>
+<div id="wrap" class="grid_1200 boxed wrap-nicescroll">
+
+<!-- Slide Show -->
+<section class="center" style="padding-top: 8%">
+    <img class="mySlides" src="Hydroponics_Img1_Template.JPG" height="150%" width="100%" >
+    <img class="mySlides" src="Hydroponics_Img2_Template.JPG" height="176%" width="100%" >
+    <img class="mySlides" src="Hydroponics_Img3_Template.JPG" height="176%" width="100%" >
+</section>
+
+<br>
+<br>
+<br>
+
+<!-- Group Description -->
+<section class="w3-container w3-center w3-content" style="max-width:80%">
+  <h2 style="color:#4CAF50;font-size:300%">Hydroponics</h2>
+  <p style="color:white"><i>IOT Project</i></p>
+  <p style="color:whitesmoke">We have created our IOT Project website. Our Group Project consisted of making an easy hydroponics device to grow plants without soil by using perlite and other nutrients.</p>
+</section>
+
+<section class="w3-container w3-center w3-content" style="max-width:80%">
+    <h2 style="color:#4CAF50;font-size:150%">What is Hydroponics?</h2>
+    <p style="color:whitesmoke">Hydroponics is a method of growing plants without using soil (i.e., soil less). This technique instead uses a mineral nutrient solution in a water solvent, allowing the nutrient uptake process to be more efficient than when using soil.
+        <br>Here, We are Demonstrating a Simple DIY Hydroponics system.  
+      </p>
+  </section>
+
+  <section class="w3-container w3-center w3-content" style="max-width:80%">
+      <h2 style="color:#4CAF50;font-size:150%">Effectiveness of Hydroponics</h2>
+      <p style="color:whitesmoke">The effectiveness of hydroponic equipment depends on the skills of a gardener.
+          If you find the correct pH, growing medium, and technology, the results could be amazing; however, it does not require advanced knowledge it only requires the basic  knowledge of the equipment and a little of the scientific knowledge.
+          This is enough to satisfy any gardener and the information can be found readily online.
+          However, to master the knowledge effectively, you need to check out more of advanced sources of information.
+          For some people, acquiring the knowledge to grow the plants by practicing hydroponics farming is one of the most fascinating parts of gardening.
+        </p>
+    </section>
+  
+
+    <section class="w3-container w3-center w3-content" style="max-width:80%">
+        <h2 style="color:#4CAF50;font-size:150%">Conclusion !</h2>
+        <p style="color:whitesmoke">If you’re looking to try out alternative gardening techniques that are designed to show premium results, hydroponics might be the perfect solution for you.
+          </p>
+        <br>
+        <br>
+      </section>
+
+
+<script>
+// Automatic Slideshow - change image every 3 seconds
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}
+  x[myIndex-1].style.display = "block";
+  setTimeout(carousel, 3000);
+}
+</script>
+</div>
+
+<br>
+<br>
+</body>
+</html>
+
+

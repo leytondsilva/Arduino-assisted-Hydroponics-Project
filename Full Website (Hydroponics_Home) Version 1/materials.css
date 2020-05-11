@@ -1,0 +1,24 @@
+
+ 
+ #head1 {
+	color:#4CAF50;
+	font-size: 20px;
+	text-align:left;
+	margin-top:5%;
+ }
+
+
+#link1:link, #link1:visited  {
+color:red;
+  text-decoration: none;
+}
+
+#link1:hover {
+  color:pink; 
+}
+
+
+#link1:active {
+  color: green;
+
+} 

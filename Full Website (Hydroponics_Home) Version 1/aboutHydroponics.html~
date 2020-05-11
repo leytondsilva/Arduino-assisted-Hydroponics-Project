@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>About Us</title>
+  <link rel ="icon" href ="Hydro_Logo.PNG" type = "image/x-icon"> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="o.css">
+
+<!-- Navigation -->
+<nav class="w3-bar w3-black">
+    <a href="Hydroponics_Home.html" class="w3-button w3-bar-item">Home</a>
+    <a href="materials.html" class="w3-button w3-bar-item">Materials</a>
+    <a href="Procedure.html" class="w3-button w3-bar-item">Procedure</a>
+    <a href="Reference.html" class="w3-button w3-bar-item">Reference</a>
+    <a href="aboutHydroponics.html" class="w3-button w3-bar-item">About</a>
+
+    <a href="Register.php" class="w3-button w3-right w3-bar-item">Register</a>
+    <a right="100%" href="Login.html" class="w3-button w3-right w3-bar-item">Login</a>
+</nav>
+
+<script>
+var xmlhttp;
+function loadXMLDoc(url,func)
+{
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=func;
+xmlhttp.open("GET",url,true);
+xmlhttp.send();
+}
+
+
+function myFunction1(){
+  var txtFile = new XMLHttpRequest();
+txtFile.open("GET", "methodhydroponics.txt", true);
+txtFile.onreadystatechange = function() {
+  if (txtFile.readyState === 4) {  // Makes sure the document is ready to parse.
+    if (txtFile.status === 200) {  // Makes sure it's found the file.
+      allText = txtFile.responseText; 
+      //lines = txtFile.responseText.split("\n"); // Will separate each line into an array
+      var customTextElement = document.getElementById('myDiv1');
+customTextElement.innerHTML = txtFile.responseText;
+    }
+  }
+}
+txtFile.send(null);
+}
+
+function myFunction2()
+{
+loadXMLDoc("methodhydroponics.txt",function()
+{
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("myDiv2").innerHTML=xmlhttp.responseText;
+    }
+  });
+}
+
+function myFunction3()
+{
+loadXMLDoc("workinghydroponics.txt",function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("myDiv3").innerHTML=xmlhttp.responseText;
+    }
+  });
+}
+</script>
+
+
+<style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body {
+    background-image: url("Background_Login.JPEG");
+        background-repeat:no-repeat;
+        background-size:cover;
+}
+
+#wrap {
+    z-index: 1;
+    position:relative;
+}
+
+.grid_1200.boxed{
+    width: 67% !important;
+}
+.boxed, .boxed2 {
+    background-color: #333337;
+    width: 89%;
+    margin: 0 auto;
+    position: relative;
+}
+    </style>
+</head>
+
+
+<body>
+<br>
+<br>
+<div id="wrap" class="grid_1200 boxed wrap-nicescroll">
+<br>
+<br>
+<h2 style="color: #4CAF50;text-align:center;font-size:400%">About Hydroponics</h2>
+<br>
+<br>
+<input  type="image"  class="center" style="height: 40%;width:40%" src="hydroponicImg1.jpg" alt="hydroponicImg1.jpg" onclick="myFunction1()" >
+<div id="myDiv1"><h2 style="text-align: center;color: #4CAF50">Click Image to change this text</h2></div>
+<br>
+<br>
+<input type="image"  class="center" style="height: 40%;width:40%" src="hydroponicImg2.jpg" onclick="myFunction2()" alt="hydroponicImg2.jpg">
+<div id="myDiv2"><h2 style="text-align: center;color: #4CAF50">Click Image to change this text</h2></div>
+<br>
+<br>
+<input type="image" class="center" style="height: 40%;width:40%" src="hydroponicImg3.jpg" onclick="myFunction3()" alt="hydroponicImg3.jpg">
+<div id="myDiv3"><h2 style="text-align: center;color: #4CAF50">Click Image to change this text</h2></div>
+
+<br>
+<br>
+</div>
+<br>
+<br>
+</body>
+</html>
