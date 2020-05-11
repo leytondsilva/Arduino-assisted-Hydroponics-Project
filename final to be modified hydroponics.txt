@@ -1,0 +1,284 @@
+#include <OneWire.h>
+#include <Wire.h>
+#include <RTClib.h>
+
+
+
+
+
+
+OneWire  ds(12);  // on pin 10 (a 4.7K resistor is necessary)
+
+
+int relayIn1 = 2;
+int relayIn2 = 3;
+int relayIn3 = 4;
+int relayIn4 = 5;
+
+int flowSwitch1 = 9; //water lvl in plants
+int flowSwitch2 = 10; //min water lvl in tank
+
+
+int soil = A3;
+
+//Data variables
+
+int flowSwitch1Read = -1; //0 need water, 1 enough water;
+int flowSwitch2Read = -2; //0 need water, 1 enough water;
+
+
+int lastMinute = -1;
+int nowMinute = -2;
+
+int nowHour = -1;
+
+RTC_DS3231 rtc;
+
+int soilHumidity = -1;
+int soilHumidityLevel = 950;
+
+
+
+
+void setup(){
+Serial.begin(9600);
+ Serial.println("setup");
+ 
+
+
+pinMode(relayIn1, OUTPUT);
+pinMode(relayIn2, OUTPUT);
+pinMode(relayIn3, OUTPUT);
+pinMode(relayIn4, OUTPUT);
+
+pinMode(flowSwitch1, INPUT_PULLUP);
+pinMode(flowSwitch2, INPUT_PULLUP);
+
+
+digitalWrite(relayIn1, HIGH);
+digitalWrite(relayIn2, HIGH);
+digitalWrite(relayIn3, HIGH);
+digitalWrite(relayIn4, HIGH);
+
+
+
+Wire.begin();
+
+rtc.begin();
+
+
+
+rtc.adjust(DateTime(F(__DATE__),F(__TIME__)));
+Serial.println("setup end");
+
+  
+}
+
+
+
+void loop(){
+  
+displayTime();  
+
+delay(2000);
+  Serial.println(lastMinute);
+  Serial.flush();
+  Serial.println(nowMinute);
+if(lastMinute!=nowMinute){
+  readSensorStatus();
+  delay(2000);
+
+  if (nowHour<7){
+    //Night shift
+      Serial.println("Night!");
+    }
+   else {
+      //Day shift
+      Serial.println("Day!");
+      
+      //Water level underwork 
+      if(flowSwitch2Read==0){
+          
+          Serial.println("Pump is off, no water in tank!, Please add Water!!!");
+        } 
+          
+          if (soilHumidity>soilHumidityLevel){
+            if(flowSwitch1Read==0){
+              turnOnPump();
+            }
+          }
+          delay(10000);       
+          lastMinute+=1;
+      
+        }
+      delay(1000);  
+      }
+    }
+ 
+
+void turnOnPump(){
+  while(flowSwitch1Read==0 && flowSwitch2Read==1){
+    Serial.println("Relay In 1 on");
+    digitalWrite(relayIn1, LOW); 
+    readSensorStatus();
+  }; 
+  Serial.println("Relay In 1 off");
+  turnOffPump();
+}
+
+void turnOffPump(){
+    digitalWrite(relayIn1, HIGH);   
+}
+
+void turnOnLamp(){
+    digitalWrite(relayIn4, LOW);   
+}
+
+void turnOffLamp(){
+    digitalWrite(relayIn4, HIGH);   
+}
+
+void readSensorStatus(){
+  
+  flowSwitch1Read = digitalRead(flowSwitch1);
+  Serial.print("Water level in upper pipes: ");
+  Serial.println(flowSwitch1Read);
+  flowSwitch2Read = digitalRead(flowSwitch2);
+  Serial.print("Water in tank: ");
+  Serial.println(flowSwitch2Read);
+
+  
+  
+  readWaterTemperature();
+  soilHumidity = analogRead(soil);
+  Serial.print("Soil Humidity sensor value: ");
+  Serial.println(soilHumidity);  
+    Serial.println(lastMinute);
+  Serial.println(nowMinute);
+}
+
+// Convert normal decimal numbers to binary coded decimal
+byte decToBcd(byte val)
+{
+  return( (val/10*16) + (val%10) );
+}
+// Convert binary coded decimal to normal decimal numbers
+byte bcdToDec(byte val)
+{
+  return( (val/16*10) + (val%16) );
+}
+
+
+
+
+void displayTime()
+{
+  DateTime now = rtc.now();
+  char t[32];
+  sprintf(t, "%02d:%02d:%02d %02d/%02d/%02d",  now.hour(), now.minute(), now.second(), now.day(), now.month(), now.year());  
+  nowHour = now.hour();
+  nowMinute = now.minute();
+  Serial.print("Date/Time: ");
+  Serial.println(t);
+  Serial.println(nowHour);
+  Serial.println(nowMinute);
+}
+
+
+
+void readWaterTemperature(){
+  byte i;
+  byte present = 0;
+  byte type_s;
+  byte data[12];
+  byte addr[8];
+  float celsius, fahrenheit;
+  
+  if ( !ds.search(addr)) {
+    Serial.println("No more addresses.");
+    Serial.println();
+    ds.reset_search();
+    delay(500);
+    return;
+  }
+  
+  Serial.print("ROM =");
+  for( i = 0; i < 8; i++) {
+    Serial.write(' ');
+    Serial.print(addr[i], HEX);
+  }
+
+  if (OneWire::crc8(addr, 7) != addr[7]) {
+      Serial.println("CRC is not valid!");
+      return;
+  }
+  Serial.println();
+ 
+  // the first ROM byte indicates which chip
+  switch (addr[0]) {
+    case 0x10:
+      Serial.println("  Chip = DS18S20");  // or old DS1820
+      type_s = 1;
+      break;
+    case 0x28:
+      Serial.println("  Chip = DS18B20");
+      type_s = 0;
+      break;
+    case 0x22:
+      Serial.println("  Chip = DS1822");
+      type_s = 0;
+      break;
+    default:
+      Serial.println("Device is not a DS18x20 family device.");
+      return;
+  } 
+
+  ds.reset();
+  ds.select(addr);
+  ds.write(0x44, 1);        // start conversion, with parasite power on at the end
+  
+  delay(1000);     // maybe 750ms is enough, maybe not
+  // we might do a ds.depower() here, but the reset will take care of it.
+  
+  present = ds.reset();
+  ds.select(addr);    
+  ds.write(0xBE);         // Read Scratchpad
+
+  Serial.print("  Data = ");
+  Serial.print(present, HEX);
+  Serial.print(" ");
+  for ( i = 0; i < 9; i++) {           // we need 9 bytes
+    data[i] = ds.read();
+    Serial.print(data[i], HEX);
+    Serial.print(" ");
+  }
+  Serial.print(" CRC=");
+  Serial.print(OneWire::crc8(data, 8), HEX);
+  Serial.println();
+
+  // Convert the data to actual temperature
+  // because the result is a 16 bit signed integer, it should
+  // be stored to an "int16_t" type, which is always 16 bits
+  // even when compiled on a 32 bit processor.
+  int16_t raw = (data[1] << 8) | data[0];
+  if (type_s) {
+    raw = raw << 3; // 9 bit resolution default
+    if (data[7] == 0x10) {
+      // "count remain" gives full 12 bit resolution
+      raw = (raw & 0xFFF0) + 12 - data[6];
+    }
+  } else {
+    byte cfg = (data[4] & 0x60);
+    if (cfg == 0x00) raw = raw & ~7;  // 9 bit resolution, 93.75 ms
+    else if (cfg == 0x20) raw = raw & ~3; // 10 bit res, 187.5 ms
+    else if (cfg == 0x40) raw = raw & ~1; // 11 bit res, 375 ms
+    //// default is 12 bit resolution, 750 ms conversion time
+  }
+  celsius = (float)raw / 16.0;
+  fahrenheit = celsius * 1.8 + 32.0;
+  Serial.print("  Temperature = ");
+  Serial.print(celsius);
+  Serial.print(" Celsius, ");
+  Serial.print(fahrenheit);
+  Serial.println(" Fahrenheit");
+}
