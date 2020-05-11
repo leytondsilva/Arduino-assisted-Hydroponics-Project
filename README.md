@@ -16,7 +16,7 @@ Temperature Sensor DS18B20.
 
 Soil Humidity Sensor.
 
-<img src=IOT%20Hardware%20Pics/IMG20191009160853.jpg width=250 height=250>
+<img src=IOT%20Hardware%20Pics/Humid.PNG width=250 height=250>
 
 Air Pump.
 
@@ -40,7 +40,7 @@ Circuit:
 
 Hardware connections:
 
-<img src=IOT%20Hardware%20Pics/Working.png width=250 height=250>
+<img src=IOT%20Hardware%20Pics/IMG20191009160916.jpg width=250 height=250>
 
 Hydroponic System:
 
