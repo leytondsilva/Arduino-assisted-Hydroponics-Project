@@ -35,15 +35,15 @@ Real time clock module - DS3231 Real Time Clock Module (CMOS)
 
 Circuit:
 
-<img src=IOT%20Hardware%20Pics/Circuit.jpg width=250 height=250>
+<img src=IOT%20Hardware%20Pics/Circuit.PNG width=250 height=250>
 
 Hardware connections:
 
-<img src=IOT%20Hardware%20Pics/Working.jpg width=250 height=250>
+<img src=IOT%20Hardware%20Pics/Working.png width=250 height=250>
 
 Hydroponic System:
 
-<img src=IOT%20Hardware%20Pics/Working.jpg width=250 height=250>
+<img src=IOT%20Hardware%20Pics/Working.PNG width=300 height=600>
 
 
 References:
