@@ -1,7 +1,7 @@
 # Arduino-assisted-Hydroponics-Project
 An automated working hydroponics system with the help of Arduino and additional sensors.
 
-
+<img src=IOT%20Hardware%20Pics/The-Best-Hydroponic-Systems-e1457739916186.jpg width=400 height=300>
 ArduinoHydrponics.txt - Arduino code to control the sensors and automation of Hydroponics
 
 Hardware Requirements:
