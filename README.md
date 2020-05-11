@@ -19,25 +19,32 @@ Soil Humidity Sensor.
 
 Air Pump.
 
-<img src=IOT%20Hardware%20Pics/IMG20191009160853.jpg width=250 height=250>
+<img src=IOT%20Hardware%20Pics/IMG20191009161003.jpg width=250 height=250>
 
 Control 4-Channel Relay Module.
 
-<img src=IOT%20Hardware%20Pics/IMG20191009160853.jpg width=250 height=250>
+<img src=IOT%20Hardware%20Pics/IMG20191009161054.jpg width=250 height=250>
 
 Arduino UNO.
 
-<img src=IOT%20Hardware%20Pics/IMG20191009160853.jpg width=250 height=250>
+<img src=IOT%20Hardware%20Pics/IMG20191009161105.jpg width=250 height=250>
 
 Real time clock module - DS3231 Real Time Clock Module (CMOS)
 
-<img src=IOT%20Hardware%20Pics/IMG20191009160853.jpg width=250 height=250> <img src=IOT%20Hardware%20Pics/IMG20191009160853.jpg width=250 height=250>
+<img src=IOT%20Hardware%20Pics/IMG20191009161148.jpg width=250 height=250> <img src=IOT%20Hardware%20Pics/IMG20191009161138.jpg width=250 height=250>
 
 Circuit:
 
+<img src=IOT%20Hardware%20Pics/Circuit.jpg width=250 height=250>
+
 Hardware connections:
 
+<img src=IOT%20Hardware%20Pics/Working.jpg width=250 height=250>
+
 Hydroponic System:
+
+<img src=IOT%20Hardware%20Pics/Working.jpg width=250 height=250>
+
 
 References:
 [1] Wikipedia. (2019, August, 05). Hydroponics. Retrieved from
