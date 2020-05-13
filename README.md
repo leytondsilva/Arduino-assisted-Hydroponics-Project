@@ -47,7 +47,7 @@ Hydroponic System:
 
 <img src=IOT%20Hardware%20Pics/Working.PNG width=300 height=600>
 
-**[Back to top](#Arduino-assisted-Hydroponics-Project)**
+**[Back to Top](#Arduino-assisted-Hydroponics-Project)**
 
 References:
 
