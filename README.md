@@ -5,7 +5,7 @@ An automated working hydroponics system with the help of Arduino and additional 
 <img src=IOT%20Hardware%20Pics/The-Best-Hydroponic-Systems-e1457739916186.jpg width=500 height=350>
 ArduinoHydrponics.txt - Arduino code to control the sensors and automation of Hydroponics
 
-Hardware Requirements:
+## Hardware Requirements:
 
 Float Switch.
 
@@ -35,7 +35,7 @@ Real time clock module - DS3231 Real Time Clock Module (CMOS)
 
 <img src=IOT%20Hardware%20Pics/IMG20191009161148.jpg width=250 height=250> <img src=IOT%20Hardware%20Pics/IMG20191009161138.jpg width=250 height=250>
 
-Circuit:
+## Circuit:
 
 <img src=IOT%20Hardware%20Pics/Circuit.PNG width=250 height=250>
 
@@ -43,13 +43,13 @@ Hardware connections:
 
 <img src=IOT%20Hardware%20Pics/IMG20191009160916.jpg width=250 height=250>
 
-Hydroponic System:
+## Hydroponic System:
 
 <img src=IOT%20Hardware%20Pics/Working.PNG width=300 height=600>
 
 **[Back to Top](#Arduino-assisted-Hydroponics-Project)**
 
-References:
+## References:
 
 [1] Wikipedia. (2019, August, 05). Hydroponics.
 Retrieved from https://en.wikipedia.org/wiki/Hydroponics
